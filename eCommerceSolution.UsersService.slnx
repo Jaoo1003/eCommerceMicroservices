@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/share/">
+    <Project Path="eCommerce.IoC.Dependency/eCommerce.IoC.Dependency.csproj" Id="0ec37911-4177-4cdb-9aba-0c89cdd54cfb" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="eCommerce.API/eCommerce.API.csproj" />
+    <Project Path="eCommerce.Core/eCommerce.Core.csproj" Id="c06c230a-0403-4973-81e2-65a97e152174" />
+    <Project Path="eCommerce.Infrastructure/eCommerce.Infrastructure.csproj" Id="b47cb84f-1d26-48bc-bdd0-14ada347455c" />
+  </Folder>
+</Solution>
