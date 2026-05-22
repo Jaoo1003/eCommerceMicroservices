@@ -1,6 +1,12 @@
 ﻿using eCommerce.Core.Entities.RepositoryContracts;
+using eCommerce.Core.ServiceContracts;
+using eCommerce.Core.Services;
+using eCommerce.Infrastructure.DbContexts;
 using eCommerce.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 
 namespace eCommerce.IoC.Dependency;
 
@@ -28,12 +34,21 @@ public static class DependencyInjection
 
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
-        services.AddSingleton<IUserRepository, UserRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<DapperDbContext>();
+
+        services.AddDbContext<EfDbContext>((sp, options) =>
+        {
+            var configuration = sp.GetRequiredService<IConfiguration>();
+            options.UseNpgsql(configuration.GetConnectionString("PostgresConnection"));
+        });
+
         return services;
     }
 
     public static IServiceCollection AddCore(this IServiceCollection services)
     {
+        services.AddScoped<IUserService, UserService>();
         return services;
     }
 }
