@@ -1,7 +1,7 @@
 ﻿using eCommerce.Core.DTO;
 using eCommerce.Core.Entities;
 using eCommerce.Core.Entities.RepositoryContracts;
-using eCommerce.Infrastructure.DbContext;
+using eCommerce.Infrastructure.DbContexts;
 
 namespace eCommerce.Infrastructure.Repositories;
 
