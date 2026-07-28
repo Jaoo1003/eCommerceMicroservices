@@ -1,6 +1,7 @@
 using eCommerce.API.Middlewares;
 using eCommerce.Core.Mappers;
 using eCommerce.IoC.Dependency;
+using FluentValidation.AspNetCore;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,8 @@ builder.Services.AddAutoMapper(cfg =>
 {
     cfg.AddMaps(typeof(ApplicationUserMappingProfile).Assembly);
 });
+
+builder.Services.AddFluentValidationAutoValidation();
 
 var app = builder.Build();
 

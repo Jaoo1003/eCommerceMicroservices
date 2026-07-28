@@ -32,10 +32,11 @@ namespace eCommerce.Core.Services
             ApplicationUser newUser = _mapper.Map<ApplicationUser>(request);
 
             ApplicationUser? registeredUser = await _userRepository.AddUser(newUser);
-            
-            if(registeredUser == null) return null;
 
-            return _mapper.Map<AuthenticationResponse>(registeredUser);
+            if (registeredUser == null) return null;
+
+            return _mapper.Map<AuthenticationResponse>(registeredUser)
+                with { Success = true , Token = "token" };
         }
     }
 }
